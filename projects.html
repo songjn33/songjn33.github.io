@@ -1,0 +1,237 @@
+<div style="float: center;width: 100%">
+<p style="text-align: center"><span style="font-size: 26px;font-family: Arial"><span style="color: #6e6e6e">Research Projects</span></span></p>
+<footer style="text-align: right; font-size: 20px">
+  <a href="index.html">Home</a> | <a href="publications.html">Publications</a> | <a href="awards.html">Awards</a> | <a href="life.html">My Life</a>
+</footer> 
+</div>
+
+ 
+<div>
+<p style="text-align: center"><span style="font-size: 16px;font-family: Arial"><span style="color: #000000"><b>
+Quick Navigation to the Projects:
+<a href="#CPP">[2D Coverage Path Planning]</a>     
+<a href="#3DCPP">[3D Coverage Path Planning]</a>     
+<a href="#Multirobot">[Multi-robot Resilient Control]</a>     
+<a href="#Time">[Time-optimal Curvature-constrained Path Planning]</a>
+
+</b></span></span></p>
+</div>
+
+&nbsp;
+<div>
+<a name="CPP"></a> 
+<p style="text-align: center"><span style="font-size: 24px;font-family: Arial"><span style="color: #FF9933"><b>1. Coverage Path Planning in Unknown Environments: The &#949;&#42; Algorithm</b></span></span></p>
+<p style="text-align: center"><span style="font-size: 18px;font-family: Arial"><b>Paper published <a href="http://ieeexplore.ieee.org/document/8286947/">[here]</a></b></span></p>
+</div>
+
+<table border="0">
+<tbody>
+<tr>
+<td style="text-align: left">
+<span style="color: #FF0000"><em>The Problem</em></span>: Many real-world applications require to plan an efficient path for autonomous vehicles to completely search an area of interest, 
+such as floor-cleaning, oil-spill cleaning, lawn mowing, etc. This is known as the <em>Coverage Path Planning Problem</em>.
+</br></br>
+
+<span style="color: #FF0000"><em>Challenges</em></span>: 
+<br>(1). <em>Unknown Environment</em>: The exact shape and locations of obstacles must be detected online and coverage pathmust be adapted in real time based on information derived from sensor measurements. 
+<br>(2). <em>Path Pattern</em>: The algorithm should produce the desired back-and-forth coverage path, as compared to spiral path that require a high number of turns for the vehicle;
+<br>(3). <em>Tasking and Navigation Control for the Autonomous Vehicle</em>: The autonomous vehicle must perform tasks (e.g., cleaning) inthe coverage region, hence it must receive tasking and navigation commands from an on-board supervisor.
+<br>(4). <em>Computational complexity</em>: The complexity for waypoint computation must be fairly low for suitability to real-time applications.
+<br>(5). <em>Complete coverage</em>: The algorithm must not suffer from the looping or the local extrema problem, and it mustguarantee complete coverage in finite time.
+
+<br><br>
+
+<span style="color: #FF0000"><em>The &#949;&#42; (pronounces: epsilon star) Algorithm</em></span>: We proposed a novel sensor-based coverage path planning algorithm, called &#949;&#42;, that guarantees complete coverage in unknown environments.
+ The algorithm generates a back-and-forth trajectory with shorter length and less 
+number of turns as compared to a number of popular existing coverage algorithms, as shown on the right hand side. More details are published <a href="http://ieeexplore.ieee.org/document/8286947/">[here]</a>. 
+
+
+<br><br>The algorithm utilizes the concept of an <em>Exploratory Turing Machine</em> (ETM), which acts as a supervisor to the autonomous vehicle and guides it with navigational commands. 
+
+<center>
+<img src="images/ETM.png" alt="image1" height="300" width="460"/></center>
+
+The ETM maintains a multi-level adaptive potential surface (MAPS), denoted as &#8496<sup>&#8467</sup>, &#8467 = 0,..., L;, which is dynamically updated using its on-board sensing measurements obtained via the
+ input vector i<sub>p</sub>, as shown above. At the lowest level &#8467 = 0, each cell is assigned a dynamically changing  potential, while at higher levels &#8467 = 1,..., L, each coarse cell is associated with the mean potential of all unexplored cells within it.
+
+Typically, the ETM operates at the lowest level (i.e., &#8467; = 0) of MAPS and utilizes the information within its local neighborhood to update navigational commands, which 
+is sent to the autonomous vehicle via an output vector O<sub>p</sub>. However, if it gets trapped into a local extremum, where no unexplored can be found locally, 
+then it gradually switches to a higher level on the MAPS until it can find the next waypoint. Then it switches back to the lowest level and resumes to typical operation.
+
+<br><br><b>Typical operation of ETM</b>: As an example, as shown below, initially, the entire search area is unknown hence all grid cells at level &#8467; = 0 are assigned with symbol "U" (i.e., unexplored) 
+and the potential surface is assigned with a time-invariant exogeneous positive potential field B, which is designed offline to have plateaus of equipotential surfaces along each column of the cells. 
+The plateaus monotonically increase in height by one unit from 1 on the rightmost column to the maximum value on the leftmost column. Thus, such B facilitates the back-and-forth motion in an obstacle free region
+ by following the highest positive equipotential surface from left to right.
+
+<br><br>Then, as the autonomous vehicle explores the search area and uses its on-board sensing systems to discover explored ("E"), obstacle ("O") and forbidden ("F", i.e., a buffer created around obstacles to prevent collision due to sensor noise) cells, the corresponding potential for explored cells are turned to 0, 
+while the potential for "O" and "F" cells are turned to -1. These assignments will help obstacle avoidance and also prevent the vehicle from re-visiting already tasked cells. 
+
+The next waypoint is the center of the cell in its neighborhood that has the max potential.
+
+
+<center><img src="images/potential_surface.png" alt="image2" height="260" width="460"/></center>
+</br>
+</br>
+</td>
+
+<td style="text-align: justify;"><span style="font-size: 16px">
+<span style="color: #FF0000"><em>Validations</em></span>: The &#949;&#42; algorithm has been validated both on the high-fidelity simulator of <a href="https://en.wikipedia.org/wiki/Player_Project"><span style="color: #0000FF">Player/Stage</span></a> and in real experiments.
+
+<p style="text-align: center; font-size: 16px;font-family: Arial; margin-bottom:-0.7cm;"><b>Validations: Simulations on Player/Stage</b></p><br>
+<p style="text-align: center; font-size: 16px;font-family: Arial; margin-bottom:0.5cm;">A comparison of coverage path with alternative online CPP methods in two complex environment</p>
+<img src="images/coverage_path.png" alt="image1" height="720" width="820"/>
+
+<center>
+<p style="text-align: center; font-size: 16px;font-family: Arial; margin-bottom:-1cm;"><b>Videos: Simulations on Player/Stage Simulator</b></p>
+<video oncontextmenu="return false;" id="video_shapeformation" src="videos/Scenario1.mp4" width="400" height="320"controls></video>
+<video oncontextmenu="return false;" id="video_shapeformation" src="videos/Scenario2.mp4" width="400" height="320"controls></video>
+</center>
+
+<p style="text-align: center; font-size: 16px;font-family: Arial; margin-bottom:0.2cm;"><b>Validations: Real Experiments</b></p><br>
+
+The algorithm was further validated in real experiments using an autonomous ground vehicle (AGV) that is
+equipped with a HOKUYO laser, a Hagisonic StarGazer indoor localization system and ten ultrasonic sensors. The videos are show below.
+<center>
+<p style="text-align: center; font-size: 16px;font-family: Arial; margin-bottom:-1cm;"><b>Videos: Real Experiments using an Autonomous Ground Vehicle</p>
+<img src="images/autonomous_vehicle.png"; alt="image2"; height="250"; width="200;" style="position:relative; top:-75px;"/>
+<video oncontextmenu="return false;" id="video_shapeformation" src="videos/RealExperiment.mp4" width="450" height="400"controls></video>
+</center>
+</span>
+</td>
+</tr>
+
+
+</tbody>
+</table>
+
+&nbsp;
+<div>
+<a name="3DCPP"></a>
+<p style="text-align: center"><span style="font-size: 24px;font-family: Arial"><span style="color: #FF9933"><b>1.5 Extended Work: 3D Coverage in Unknown Environments</b></span></span></p>
+<p style="text-align: center; margin-bottom:-0.5cm;"><span style="font-size: 18px;font-family: Arial"><b>Paper published <a href="http://ieeexplore.ieee.org/abstract/document/8232157/">[here]</a></b></span></p>
+</div>
+
+<table border="0">
+<tbody>
+<tr>
+<td style="text-align: left">
+<span style="color: #FF0000"><em>The Problem</em></span>: The &#949;&#42; algorithm was extended
+ to solve the 3D coverage problem in unknown environment. 
+We use the underwater terrain reconstruction problem as an example for illustration.
+This problem requires the autonomous underwater vehicle (AUV) to completely scan and then reconstruct the 3D surface of the underwater terrian, 
+thus an efficient coverage path is needed that guarantees complete coverage in the 3D unknown environment.
+</br>
+
+<img src="images/3D_idea.png" alt="image1" height="140" width="600" style = "position:relative; top: 10px;"/>
+<br>
+<br>
+<span style="color: #FF0000"><em>3D Coverage using Multi-level Coverage Trees</em></span>: We proposed the 3D coverage strategy using multi-level coverage trees, as shown below.
+The algorithm guides the AUV to scan layer by layer in a top-down manner, while it dynamically constructs a coverage tree to record the search progress.
+<center>
+<img src="images/coverage_tree.png"; alt="image2"; height="250"; width="500;" style="position:relative; top: 5px;"/>
+</center>
+<br><br>
+Each node in the coverage tree refers to a sub-region on a horizontal surface; initially, the tree contains a single root which is the highest layer.
+When the AUV is searching within a node using the &#949;&#42; algorithm, it uses its multi-beam sensor to scan the environment beneath it and identifies the "child nodes" and addes
+them to the existing coverage tree. 
+
+<br><br>As it completes searching the current node, it either calls Breadth-first-search (BFS) or Depth-first-search (DFS) to compute for the next region to explore.
+The coverage is completed when no more nodes are unexplored in the tree. Then, the multi-beam sensor measurements, which constitute a 3D point cloud, are used to reconstruct the surface using 
+the <a href="https://en.wikipedia.org/wiki/Alpha_shape">Alpha-Shape</a>.
+
+<br><br>
+<span style="color: #FF0000"><em>Validations</em></span>: We have validated its efficacy on the Robot Operating System (ROS) with UWSim. The results are shown on the right hand side.
+</br>
+</td>
+
+<td style="text-align: justify"><span style="font-size: 16px">
+</br>
+</br>
+<center>
+<p style="text-align: center; font-size: 16px;font-family: Arial; margin-bottom: 0.2cm;"><b>A Comparison of 3D Coverage Path using BFS and DFS Search</b></p>
+<img src="images/3D_tjc.png" alt="image1" height="480" width="800"/>
+</center>
+<center>
+<p style="text-align: center; font-size: 16px;font-family: Arial; margin-bottom: 0.2cm;"><b>Terrain Reconstruction using Alpha-Shape</b></p>
+<img src="images/terrain_reconstruction.png" alt="image1" height="380" width="600"/>
+</center>
+</span>
+</td>
+</tr>
+
+
+</tbody>
+</table>
+
+
+&nbsp;
+<div>
+<a name="Multirobot"></a>
+<p style="text-align: center"><span style="font-size: 24px;font-family: Arial"><span style="color: #FF9933"><b>2. Multi-robot Resilient Control</b></span></span></p>
+</div>
+
+<table border="0">
+<tbody>
+<tr>
+<td style="text-align: left">
+<span style="color: #FF0000"><em>The Problem</em></span>:
+<br><br>
+<span style="color: #FF0000"><em>Challenges</em></span>: Under construction
+
+<br><br>
+<span style="color: #FF0000"><em>The care Algorithm</em></span>: Under Construction...
+<br><br>
+<span style="color: #FF0000"><em>Validations</em></span>: under construction
+</br>
+
+</td>
+
+</span>
+</td>
+</tr>
+
+
+</tbody>
+</table>
+
+
+
+&nbsp;
+<div>
+<a name="Time"></a>
+<p style="text-align: center"><span style="font-size: 24px;font-family: Arial"><span style="color: #FF9933"><b>3. Time-optimal Risk-aware Path Planning for Curvature-constrained Vehicles</b></span></span></p>
+</div>
+
+<table border="0">
+<tbody>
+<tr>
+<td style="text-align: left">
+<span style="color: #FF0000"><em>The Problem</em></span>: Under construction.
+</br>
+</br>
+<span style="color: #FF0000"><em>Idea</em></span>: Under construction.
+</br>
+</br>
+<span style="color: #FF0000"><em>Results</em></span>
+</br>
+</br>
+
+</td>
+
+</tr>
+
+
+
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
