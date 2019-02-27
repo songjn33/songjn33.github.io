@@ -1,1 +1,142 @@
-Hello World
+<!DOCTYPE html> 
+<html>
+
+<head>
+  <title>My Website</title>
+  <meta name="description" content="website description" />
+  <meta name="keywords" content="website keywords, website keywords" />
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+  <link rel="stylesheet" type="text/css" href="css/style.css" />
+  <!-- modernizr enables HTML5 elements and feature detects -->
+  <script type="text/javascript" src="js/modernizr-1.5.min.js"></script>
+</head>
+
+<body>
+  <div id="main">
+    
+	<header>
+	  
+	  <div id="header_section">	  
+	    
+		<div id="welcome">
+	      <h2>Junnan Song</h2>
+		  <h3>Know Pain, Know Gain. </h3>
+	    </div><!--close welcome-->			  	
+	  
+	    <nav>
+          <ul id="nav">
+            <li class="current"><a href="index.html">Home</a></li>
+            <li><a href="publications.html">Publications</a></li>
+			<li><a href="awards.html">Awards</a></li>
+            <li><a href="projects.html">Research</a></li>
+			<li><a href="life.html">My Life</a></li>
+          </ul>
+        </nav>
+      
+	  </div>		
+	
+	</header>
+    
+	<div id="site_content">		
+	
+	  <div id="content">
+		
+		  <h1>Hello, Welcome to My Website!</h1> 
+
+          <div class="slideshow">
+	        <ul class="slideshow">
+		<li ><img width="300" height="300" src="images/conference1.jpg" alt="Presentation at OCEANS'17, Anchorage, Alaska" /></li>
+                <li ><img width="320" height="300" src="images/conference2.jpg" alt="Presentation at OCEANS'17, Anchorage, Alaska" /></li>
+		
+		<li ><img width="250" height="300" src="images/UConn_newpavement.png" alt="New Pavement at UConn, Storrs" /></li>
+            	</ul> 
+	      </div><!--close slideshow-->
+	
+	      <div class="sidebar_container">       
+		    <div class="sidebar">
+              <div class="sidebar_item">
+                <h2>Research Interests</h2>
+                <p style="text-align: justify">Motion and Path Planning, Autonomous Systems, Self-driving Vehicles, Multi-robot Resilient Control.</p>
+				<h2>Languages I Speak</h2>
+                <p style="text-align: justify"><span style="color: #FFA500; font-size:115%;">When I talk to compilers:</span> C++, MATLAB/Simulink.</p>
+				<p style="text-align: justify"><span style="color: #FFA500; font-size:115%;">When I talk to people:</span> Chinese, English, and German (getting better every day).</p>
+              </div><!--close sidebar_item--> 
+            </div><!--close sidebar-->     		
+		    <div class="sidebar">
+              <div class="sidebar_item">
+                <h2>Latest News</h2>
+		<h3>Oct 2018</h3>
+                <p style="text-align: justify">My journal paper is accepted to IEEE RA-L.</p>
+		<h3>Sept 2018</h3>
+                <p style="text-align: justify">I am awarded the Outstanding Reviewer by Elsevier.</p>
+		<h3>June 2018</h3>
+                <p style="text-align: justify">I am awarded the Doctoral Dissertation Fellowship.</p>
+                <h3>Nov 2017</h3>
+                <p style="text-align: justify">My journal paper is accepted to IEEE T-RO.</p>
+				<h3>Sept 2017</h3>
+                <p style="text-align: justify">I served as Session Chair at the OCEANS'17 conference.</p>
+				<h3>July 2017</h3>
+                <p style="text-align: justify">I am awarded the Doctoral Student Travel Award.</p>		
+		      </div><!--close sidebar_item--> 
+            </div><!--close sidebar-->	
+  
+            <div class="sidebar">
+              <div class="sidebar_item">
+                <h2>Contact</h2>
+                <p>Email: junnan.song@uconn.edu</p>
+              </div><!--close sidebar_item--> 
+            </div><!--close sidebar-->
+           </div><!--close sidebar_container-->				
+		
+		  <div class="content_item">		  
+		    <div class="content_imagetext">
+		      <div class="content_image">
+		        <img src="images/frontpage.jpg" alt="image1" height="150" width="150"/>
+	          </div>
+		      <p style="text-align: justify">I am a Ph.D. candidate in the <a href="http://www.ee.uconn.edu"><span style="color: #0000FF">Department of Electrical and Computer Engineering</span></a> at the 
+		  <a href="http://www.uconn.edu/"><span style="color: #0000FF">University of Connecticut</span></a>, Storrs, USA. I obtained my B.Engr. in Automation, and M.Engr. in Control Theory and Control Engineering, in 2006 and 2010, respectively, 
+		  both from <a href="http://www.neu.edu.cn"><span style="color: #0000FF">Northeastern University (China)</span></a>. I earned my M.S. in Electrical Engineering from <a href="http://www.neu.edu.cn"><span style="color: #0000FF">University of Connecticut</span></a> in 2016 with GPA 4.0/4.0. 
+
+		  I have been serving as a reviewer for IEEE Aerospace and Electronic Systems Magazine, Intelligent Service Robots, Neurocomputing, International Conference on Robotics and Automation (ICRA), American Control Conference (ACC), Dynamic Systems and Control Conference (DSCC), etc. </p>
+		</p>
+
+		<p style="text-align: center; margin-top:1cm; margin-bottom:-2cm"><span style="font-size: 18px;font-family: Arial"><span style="color: #000000"><b>Selected Videos in Coverage Path Planning using Autonomous Vehicles</b></span></span></p>
+		
+	
+		</div><!--close content_imagetext-->		  
+		    <div class="content_container">
+			<video oncontextmenu="return false;" id="video_shapeformation" src="videos/Scenario1.mp4" width="310" height="280"controls></video>
+		      <p style="margin-top: -1cm; margin-bottom: -1cm;">The &epsilon;* Algorithm: Complete coverage path planning in unknown obstalce-rich environments (simulation on Player/Stage). For details, check our paper at <a href="http://ieeexplore.ieee.org/document/8286947/">[this link]</a></p>
+ 			<video oncontextmenu="return false;" id="video_shapeformation" src="videos/Scenario2.mp4" width="310" height="280"controls></video>
+		      <p style="margin-top: -1cm; margin-bottom: -1cm;">The &epsilon;* Algorithm: Complete coverage in an apartment scenario with adaptive sweep directions (simulation on Player/Stage).</p>		  	  
+		    </div><!--close content_container-->
+                   <div class="content_container">
+			  <video oncontextmenu="return false;" id="video_shapeformation" src="videos/RealExperiment.mp4" width="310" height="280"controls></video>
+		      <p style="margin-top: -1cm; margin-bottom: -1cm;">The &epsilon;* Algorithm: Complete coverage in a laboratory setting using autonoous ground vehicles with a HOKUYO laser and a Hagisonic indoor localization system.</p>
+			 <video oncontextmenu="return false;" id="video_shapeformation" src="videos/SLAM_LawnMowing.mp4" width="310" height="280"controls></video>
+		      <p style="margin-top: -1cm; margin-bottom: -1cm;">ICP-based SLAM lawn mowing (gray for pavement and green for target grass).</p>			  	  		  
+		    </div><!--close content_container-->
+                   <div class="content_container">
+		  	  		  
+		    </div><!--close content_container-->
+                   <div class="content_container">	  	  
+	  
+		    </div><!--close content_container-->			  
+		  </div><!--close content_item-->	  
+	  
+	  </div><!--close content-->   
+	
+	</div><!--close site_content-->  	
+  
+    <footer>
+	  <a href="index.html">Home</a> | <a href="awards.html">Awards</a> | <a href="projects.html">Research</a> | <a href="life.html">My Life</a><br/><br/>
+    </footer> 
+  
+  </div><!--close main-->
+  
+  <!-- javascript at the bottom for fast page loading -->
+  <script type="text/javascript" src="js/jquery.min.js"></script>
+  <script type="text/javascript" src="js/image_slide.js"></script>
+  
+</body>
+</html>
